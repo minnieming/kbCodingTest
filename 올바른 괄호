@@ -1,0 +1,36 @@
+class Solution {
+    boolean solution(String s) {
+        
+        boolean answer;
+        boolean check = true;
+        
+        char[] solve = s.toCharArray();
+        int x = 0;
+        int y = 0;
+        
+        for (int i=0; i<solve.length; i++) {
+            
+            switch (solve[i]) {
+                case '(':
+                    x += 1;
+                    break;
+                    
+                case ')':
+                    y += 1;
+                    
+                    if (x<y) {
+                        check = false;
+                    } 
+                    
+                    break;
+            }
+        }
+        
+        answer = x==y;
+        if (!check) {
+            answer = false;
+        }
+        
+        return answer;
+    }
+}
