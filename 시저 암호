@@ -1,0 +1,30 @@
+import java.util.Arrays;
+class Solution {
+    public String solution(String s, int n) {
+        char[] array1 = {'A','B','C','D','E','F','G','H','I','J',
+                  'K','L','M','N','O','P','Q','R','S','T',
+                  'U','V','W','X','Y','Z' };
+        char[] array2 = {'a','b','c','d','e','f','g','h','i','j',
+                  'k','l','m','n','o','p','q','r','s','t',     'u','v','w','x','y','z'};
+        
+        String answer = "";
+        
+        for (int i=0; i<s.length(); i++) {
+            char ch = s.charAt(i);
+            
+            int index1 = Arrays.binarySearch(array1, ch);
+            int index2 = Arrays.binarySearch(array2, ch);
+            
+            if (index1 >= 0) {
+                int newIndex = (index1 + n) % array1.length;
+                answer += array1[newIndex];
+            } else if (index2 >= 0) {
+                int newIndex = (index2 + n) % array2.length;
+                answer += array2[newIndex];
+            } else if (index1 < 0 && index2 <0) {
+                answer += " ";
+            }
+        }
+        return answer;
+    }
+}
